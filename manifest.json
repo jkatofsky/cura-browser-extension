@@ -1,0 +1,21 @@
+{
+    "name": "Cura",
+    "version": "1.0",
+    "description": "The future of helpdesks.",
+    "permissions": ["storage", "declarativeContent", "notifications", "https://mchacks-cura.appspot.com/"],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "page_action": {
+        "default_title": "Trigger demo",
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "manifest_version": 2,
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1HAj0x4RszBvMFVIYCGDjILEnABu6Td+0tI5vszjxX28/MyGgquEqEgMc2dOZp/mO5Sn3R/WkQ7gD0Jk7dbDvZm9AsmksddT7XAUy/XrjShEFKextS5qPaLPcVP6hhSGJ2kbESdWrs0K43CzsO31MVLuxt0HLe2zj1efSBGxke3QANfzRoeRhgBlDnwPbDZtkKGtE3mmK0ph/pIRtM06+3lSvKcdsG8javjRYeVVPJNGwrE7LIZp/T5epyHu6BhNnk2wY7xU2znnmHOwpmB3F4+SxKF+FRQWO2nTmxCd7sVu9YXKjlwn6C02Trxk2DRnzuSX3oJQCV1erYDgL2vSXQIDAQAB"
+}
