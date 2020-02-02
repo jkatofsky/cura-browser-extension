@@ -30,9 +30,9 @@ chrome.pageAction.onClicked.addListener(function(tab) {
         xmlHttp.send( null );
         return xmlHttp.responseText;
     }
-    var response = httpGet("https://mchacks-cura.appspot.com/actions/RBC");
+    var response = httpGet("https://mchacks-cura.appspot.com/actions/RBC/cancel");
+    var response2 = httpGet("https://mchacks-cura.appspot.com/actions/RBC/currency");
     var opt1 = { type: "basic", title: "cura", message: response, iconUrl: "icon48.png"}
-    var opt2 = { type: "list", title: "cura", message: "would you like?", iconUrl: "icon48.png"}
     chrome.notifications.create(opt1);
     var myNotificationID = null;
 
@@ -44,7 +44,7 @@ chrome.pageAction.onClicked.addListener(function(tab) {
             type:    "basic",
             iconUrl: "icon48.png",
             title:   "cura",
-            message: "Flight inbound... Would you like\nsome cash in that currency?",
+            message: response2,
             buttons: [{
                 title: "Yes, please"
             }, {
@@ -58,14 +58,23 @@ chrome.pageAction.onClicked.addListener(function(tab) {
     chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
         if (notifId === myNotificationID) {
             if (btnIdx === 0) {
-                window.open("https://mchacks-cura.appspot.com/confirmations/RBC");
+                window.open("https://mchacks-cura.appspot.com/confirmations/RBC/currency");
             }
         }
     });
 }
-setTimeout(function() { buttonNotif(); }, 5000)
-
+setTimeout(function() { buttonNotif(); }, 10000),
+setTimeout(function() {
+    var opt2 = { type: "basic", title: "cura", message: "Detected a fraudulant charge... New card on it's way!", iconUrl: "icon48.png"};
+    chrome.notifications.create(opt2);}, 30000)
 });
+
+/*
+const linkButton = document.createElement('button');
+linkButton.className = 'tooltip mcen-profLinkButton mcen-' + className.toLowerCase() + 'LinkButton ';
+linkButton.title = message;
+linkButton.innerText = className;
+link.appendChild(linkButton);*/
 
 /*
 chrome.browserAction.onClicked.addListener(function() {
